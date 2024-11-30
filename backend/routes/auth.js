@@ -11,7 +11,7 @@ const upload = multer({storage: multer.diskStorage({
     }
 }) })
 
-//kn
+
 const { 
     registerUser,
     loginUser,
