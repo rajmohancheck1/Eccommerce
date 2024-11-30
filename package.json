@@ -1,5 +1,5 @@
 {
-  "name": "rajcart",
+  "name": "jvlcart",
   "version": "1.0.0",
   "description": "ecommerce using MERN stack",
   "main": "server.js",
@@ -9,7 +9,7 @@
     "prod": "set NODE_ENV=production&&nodemon backend/server.js",
     "seeder": "node backend/utils/seeder.js"
   },
-  "author": "RAJAMOHAN R ",
+  "author": "JV Logesh",
   "license": "ISC",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
