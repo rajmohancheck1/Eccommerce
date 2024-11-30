@@ -8,7 +8,7 @@ dotenv.config({path:path.join(__dirname,"config/config.env")});
 
 
 app.use(express.json());
-app.use(cookieParser());
+app.use(cookieParser()); 
 app.use('/uploads', express.static(path.join(__dirname,'uploads') ) )
 
 const products = require('./routes/product')
