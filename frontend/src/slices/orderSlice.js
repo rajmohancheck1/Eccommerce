@@ -1,7 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-
-
 const orderSlice = createSlice({
     name: 'order',
     initialState: {
@@ -13,148 +10,94 @@ const orderSlice = createSlice({
         isOrderUpdated: false
     },
     reducers: {
-        createOrderRequest(state, action) {
-            return {
-                ...state,
-                loading: true
-            }
+        createOrderRequest(state) {
+            state.loading = true;
         },
         createOrderSuccess(state, action) {
-            return {
-                ...state,
-                loading: false,
-                orderDetail: action.payload.order
-            }
+            state.loading = false;
+            state.orderDetail = action.payload.order;
         },
         createOrderFail(state, action) {
-            return {
-                ...state,
-                loading: false,
-                error: action.payload
-            }
+            state.loading = false;
+            state.error = action.payload;
         },
-        clearError(state, action) {
-            return {
-                ...state,
-                error: null
-            }
+        clearError(state) {
+            state.error = null;
         },
-        userOrdersRequest(state, action) {
-            return {
-                ...state,
-                loading: true
-            }
+        userOrdersRequest(state) {
+            state.loading = true;
         },
         userOrdersSuccess(state, action) {
-            return {
-                ...state,
-                loading: false,
-                userOrders: action.payload.orders
-            }
+            state.loading = false;
+            state.userOrders = action.payload.orders;
         },
         userOrdersFail(state, action) {
-            return {
-                ...state,
-                loading: false,
-                error: action.payload
-            }
+            state.loading = false;
+            state.error = action.payload;
         },
-        orderDetailRequest(state, action) {
-            return {
-                ...state,
-                loading: true
-            }
+        orderDetailRequest(state) {
+            state.loading = true;
         },
         orderDetailSuccess(state, action) {
-            return {
-                ...state,
-                loading: false,
-                orderDetail: action.payload.order
-            }
+            state.loading = false;
+            state.orderDetail = action.payload.order;
         },
         orderDetailFail(state, action) {
-            return {
-                ...state,
-                loading: false,
-                error: action.payload
-            }
+            state.loading = false;
+            state.error = action.payload;
         },
-        adminOrdersRequest(state, action) {
-            return {
-                ...state,
-                loading: true
-            }
+        adminOrdersRequest(state) {
+            state.loading = true;
         },
         adminOrdersSuccess(state, action) {
-            return {
-                ...state,
-                loading: false,
-                adminOrders: action.payload.orders
-            }
+            state.loading = false;
+            state.adminOrders = action.payload.orders;
         },
         adminOrdersFail(state, action) {
-            return {
-                ...state,
-                loading: false,
-                error: action.payload
-            }
+            state.loading = false;
+            state.error = action.payload;
         },
-
-        deleteOrderRequest(state, action) {
-            return {
-                ...state,
-                loading: true
-            }
+        deleteOrderRequest(state) {
+            state.loading = true;
         },
-        deleteOrderSuccess(state, action) {
-            return {
-                ...state,
-                loading: false,
-                isOrderDeleted: true
-            }
+        deleteOrderSuccess(state) {
+            state.loading = false;
+            state.isOrderDeleted = true;
         },
         deleteOrderFail(state, action) {
-            return {
-                ...state,
-                loading: false,
-                error: action.payload
-            }
+            state.loading = false;
+            state.error = action.payload;
         },
-
-        updateOrderRequest(state, action) {
-            return {
-                ...state,
-                loading: true
-            }
+        updateOrderRequest(state) {
+            state.loading = true;
         },
-        updateOrderSuccess(state, action) {
-            return {
-                ...state,
-                loading: false,
-                isOrderUpdated: true
-            }
+        updateOrderSuccess(state) {
+            state.loading = false;
+            state.isOrderUpdated = true;
         },
         updateOrderFail(state, action) {
-            return {
-                ...state,
-                loading: false,
-                error: action.payload
-            }
+            state.loading = false;
+            state.error = action.payload;
+        },
+        clearOrderDeleted(state) {
+            state.isOrderDeleted = false;
+        },
+        clearOrderUpdated(state) {
+            state.isOrderUpdated = false;
         },
 
-        clearOrderDeleted(state, action) {
-            return {
-                ...state,
-                isOrderDeleted: false
-            }
+        // New cancel order actions
+        cancelOrderRequest(state) {
+            state.loading = true;
         },
-        clearOrderUpdated(state, action) {
-            return {
-                ...state,
-                isOrderUpdated: false
-            }
-        }
-
+        cancelOrderSuccess(state) {
+            state.loading = false;
+            state.isOrderUpdated = true;
+        },
+        cancelOrderFail(state, action) {
+            state.loading = false;
+            state.error = action.payload;
+        },
     }
 });
 
@@ -181,8 +124,10 @@ export const {
     updateOrderRequest,
     updateOrderSuccess,
     clearOrderDeleted,
-    clearOrderUpdated
- } = actions;
+    clearOrderUpdated,
+    cancelOrderRequest,
+    cancelOrderSuccess,
+    cancelOrderFail
+} = actions;
 
 export default reducer;
-

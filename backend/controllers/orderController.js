@@ -112,4 +112,27 @@ exports.deleteOrder = catchAsyncError(async (req, res, next) => {
         success: true
     })
 })
+// Cancel Order - api/v1/order/cancel/:id
+exports.cancelOrder = catchAsyncError(async (req, res, next) => {
+    const order = await Order.findById(req.params.id);
+
+    if (!order) {
+        return next(new ErrorHandler(`Order not found with this id: ${req.params.id}`, 404));
+    }
+
+    // Check if order is already shipped
+    if (order.orderStatus === 'Delivered') {
+        return next(new ErrorHandler('Order has already been Delivered and cannot be canceled.', 400));
+    }
+
+    order.orderStatus = 'Cancelled';  // Set order status to "Cancelled"
+    await order.save();
+
+    res.status(200).json({
+        success: true,
+        message: 'Order has been cancelled successfully.',
+        order,
+    });
+});
+
 
