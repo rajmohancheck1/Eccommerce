@@ -38,6 +38,9 @@ import UpdateOrder from './components/admin/UpdateOrder';
 import UserList from './components/admin/UserList';
 import UpdateUser from './components/admin/UpdateUser';
 import ReviewList from './components/admin/ReviewList';
+// Import Contact components
+import Contact from './components/Contact';
+import ContactMessagesList from './components/admin/ContactMessagesList';
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("")
@@ -63,6 +66,7 @@ function App() {
                       <Route path='/product/:id' element={<ProductDetail/>} />
                       <Route path='/login' element={<Login/>} />
                       <Route path='/register' element={<Register/>} />
+                      <Route path='/contact' element={<Contact/>} />
                       <Route path='/myprofile' element={<ProtectedRoute><Profile/></ProtectedRoute> } />
                       <Route path='/myprofile/update' element={<ProtectedRoute><UpdateProfile/></ProtectedRoute> } />
                       <Route path='/myprofile/update/password' element={<ProtectedRoute><UpdatePassword/></ProtectedRoute> } />
@@ -74,8 +78,7 @@ function App() {
                       <Route path='/order/success' element={<ProtectedRoute><OrderSuccess/></ProtectedRoute> } />
                       <Route path='/orders' element={<ProtectedRoute><UserOrders/></ProtectedRoute> } />
                       <Route path='/order/:id' element={<ProtectedRoute><OrderDetail/></ProtectedRoute> } />
-                      {stripeApiKey && <Route path='/payment' element={<ProtectedRoute><Elements stripe={loadStripe(stripeApiKey)}><Payment/></Elements></ProtectedRoute> } />
-} 
+                      {stripeApiKey && <Route path='/payment' element={<ProtectedRoute><Elements stripe={loadStripe(stripeApiKey)}><Payment/></Elements></ProtectedRoute> } />} 
                   </Routes>
                 </div>
                 {/* Admin Routes */}
@@ -89,6 +92,8 @@ function App() {
                   <Route path='/admin/users' element={ <ProtectedRoute isAdmin={true}><UserList/></ProtectedRoute> } />
                   <Route path='/admin/user/:id' element={ <ProtectedRoute isAdmin={true}><UpdateUser/></ProtectedRoute> } />
                   <Route path='/admin/reviews' element={ <ProtectedRoute isAdmin={true}><ReviewList/></ProtectedRoute> } />
+                  {/* New Admin Contact Messages Route */}
+                  <Route path='/admin/contact-messages' element={ <ProtectedRoute isAdmin={true}><ContactMessagesList/></ProtectedRoute> } />
                 </Routes>
             <Footer/>
         </HelmetProvider>

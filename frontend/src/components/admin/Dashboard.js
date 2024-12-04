@@ -4,12 +4,14 @@ import { useEffect } from "react";
 import { getAdminProducts } from "../../actions/productActions";
 import {getUsers} from '../../actions/userActions'
 import {adminOrders as adminOrdersAction} from '../../actions/orderActions'
+import { adminContactMessages } from "../../actions/contactActions"; // Add this import
 import { Link } from "react-router-dom";
 
 export default function Dashboard () {
     const { products = [] } = useSelector( state => state.productsState);
     const { adminOrders = [] } = useSelector( state => state.orderState);
     const { users = [] } = useSelector( state => state.userState);
+    const { contactMessages = [] } = useSelector( state => state.contactState); // Add this line
     const dispatch = useDispatch();
     let outOfStock = 0;
 
@@ -28,14 +30,12 @@ export default function Dashboard () {
         })
     }
 
-
-
     useEffect( () => {
        dispatch(getAdminProducts);
        dispatch(getUsers);
-       dispatch(adminOrdersAction)
+       dispatch(adminOrdersAction);
+       dispatch(adminContactMessages); // Add this line
     }, [])
-
 
     return (
         <div className="row">
@@ -69,7 +69,6 @@ export default function Dashboard () {
                         </div>
                     </div>
 
-
                     <div className="col-xl-3 col-sm-6 mb-3">
                         <div className="card text-white bg-danger o-hidden h-100">
                             <div className="card-body">
@@ -83,7 +82,6 @@ export default function Dashboard () {
                             </Link>
                         </div>
                     </div>
-
 
                     <div className="col-xl-3 col-sm-6 mb-3">
                         <div className="card text-white bg-info o-hidden h-100">
@@ -99,12 +97,17 @@ export default function Dashboard () {
                         </div>
                     </div>
 
-
                     <div className="col-xl-3 col-sm-6 mb-3">
                         <div className="card text-white bg-warning o-hidden h-100">
                             <div className="card-body">
-                                <div className="text-center card-font-size">Out of Stock<br /> <b>{outOfStock}</b></div>
+                                <div className="text-center card-font-size">Contact Messages<br /> <b>{contactMessages.length}</b></div>
                             </div>
+                            <Link className="card-footer text-white clearfix small z-1" to="/admin/contact-messages">
+                                <span className="float-left">View Details</span>
+                                <span className="float-right">
+                                    <i className="fa fa-angle-right"></i>
+                                </span>
+                            </Link>
                         </div>
                     </div>
                 </div>

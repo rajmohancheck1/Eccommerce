@@ -10,7 +10,7 @@ const orderSlice = createSlice({
         isOrderUpdated: false
     },
     reducers: {
-        createOrderRequest(state) {
+        createOrderRequest(state, action) {
             state.loading = true;
         },
         createOrderSuccess(state, action) {

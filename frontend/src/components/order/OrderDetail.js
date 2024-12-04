@@ -34,7 +34,7 @@ export default function OrderDetail() {
                             <hr />
 
                             <h4 className="my-4">Payment</h4>
-                            <p className={isPaid ? 'greenColor' : 'redColor'}><b>{isPaid ? 'PAID' : 'NOT PAID'}</b></p>
+                            <p className={isPaid ? 'greenColor' : 'redColor'}><b>{paymentInfo.status}</b></p>
 
                             <h4 className="my-4">Order Status:</h4>
                             <p className={orderStatus && orderStatus.includes('Delivered') ? 'greenColor' : 'redColor'}><b>{orderStatus}</b></p>
