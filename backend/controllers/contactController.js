@@ -4,12 +4,13 @@ const ErrorHandler = require('../utils/errorHandler');
 
 // Create New Contact Message
 exports.createContactMessage = catchAsyncError(async (req, res, next) => {
-    const { name, email, phoneNumber, message } = req.body;
+    const { name, email, phoneNumber, subject, message } = req.body;
 
     const contactMessage = await Contact.create({
         name,
         email,
         phoneNumber,
+        subject,
         message
     });
 

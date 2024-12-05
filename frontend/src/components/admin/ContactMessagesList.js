@@ -26,6 +26,7 @@ export default function ContactMessagesList() {
                 { label: 'Name', field: 'name', sort: 'asc' },
                 { label: 'Email', field: 'email', sort: 'asc' },
                 { label: 'Phone Number', field: 'phoneNumber', sort: 'asc' },
+                { label: 'Subject', field: 'subject', sort: 'asc' }, // New column
                 { label: 'Date', field: 'createdAt', sort: 'asc' },
                 { label: 'Actions', field: 'actions', sort: 'asc' }
             ],
@@ -38,6 +39,7 @@ export default function ContactMessagesList() {
                 name: message.name,
                 email: message.email,
                 phoneNumber: message.phoneNumber,
+                subject: message.subject, // Add subject
                 createdAt: new Date(message.createdAt).toLocaleDateString(),
                 actions: (
                     <div>
@@ -113,6 +115,7 @@ export default function ContactMessagesList() {
                             <p><strong>Name:</strong> {selectedMessage.name}</p>
                             <p><strong>Email:</strong> {selectedMessage.email}</p>
                             <p><strong>Phone:</strong> {selectedMessage.phoneNumber}</p>
+                            <p><strong>Subject:</strong> {selectedMessage.subject}</p>
                             <p><strong>Date:</strong> {new Date(selectedMessage.createdAt).toLocaleString()}</p>
                             <p><strong>Message:</strong></p>
                             <p>{selectedMessage.message}</p>

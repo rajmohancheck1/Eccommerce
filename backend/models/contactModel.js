@@ -26,6 +26,10 @@ const contactSchema = mongoose.Schema({
             message: 'Please enter a valid 10-digit phone number'
         }
     },
+    subject: {
+        type: String,
+        required: [true, 'Please enter a subject']
+    },
     message: {
         type: String,
         required: [true, 'Please enter your message'],
