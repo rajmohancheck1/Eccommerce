@@ -20,7 +20,8 @@ const reducer = combineReducers({
 
 const store = configureStore({
     reducer,
-    middleware: [thunk]
+    middleware: (getDefaultMiddleware) => 
+        getDefaultMiddleware().concat(thunk)
 })
 
 export default store;
