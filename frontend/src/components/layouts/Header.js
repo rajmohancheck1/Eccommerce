@@ -12,7 +12,7 @@ export default function Header () {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const logoutHandler = () => {
-      dispatch(logout);
+      dispatch(logout());
     }
 
 
@@ -21,7 +21,7 @@ export default function Header () {
         <div className="col-12 col-md-3">
           <div className="navbar-brand">
             <Link to="/">
-              <img width="150px" alt='JVLcart Logo' src="/images/logo.png" />
+              <img width="150px" height="80px" alt='RAJcart Logo' src="/images/logo.png" />
             </Link>
             </div>
         </div>
@@ -36,7 +36,7 @@ export default function Header () {
               <Dropdown className='d-inline' >
                   <Dropdown.Toggle variant='default text-white pr-5' id='dropdown-basic'>
                     <figure className='avatar avatar-nav'>
-                      <Image width="50px" src={user.avatar??'./images/default_avatar.png'}  />
+                      <Image width="50px" src={user.avatar || './images/default_avatar.png'}  />
                     </figure>
                     <span>{user.name}</span>
                   </Dropdown.Toggle>
